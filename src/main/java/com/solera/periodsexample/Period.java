@@ -1,12 +1,13 @@
 package com.solera.periodsexample;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
 @EqualsAndHashCode
-@Builder
+@Builder(access = AccessLevel.PACKAGE)
 public class Period {
 
     private Date start;
@@ -29,6 +30,9 @@ public class Period {
 
 
     public boolean isOverlapped(final Period period) {
+        if (period == null) {
+            throw new IllegalArgumentException("Period to check is mandatory");
+        }
         return this.equals(period) || this.isBetween(period.start) || this.isBetween(period.end) || this.isSelfContainedInPeriod(period);
     }
 

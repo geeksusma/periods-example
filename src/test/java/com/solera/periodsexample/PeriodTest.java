@@ -1,12 +1,12 @@
 package com.solera.periodsexample;
 
-import org.assertj.core.api.Assertions;
 import org.assertj.core.util.DateUtil;
 import org.junit.Test;
 
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class PeriodTest {
 
@@ -17,7 +17,7 @@ public class PeriodTest {
         final Date endDate = DateUtil.now();
 
         //when
-        final Throwable raisedException = Assertions.catchThrowable(() -> new Period(startDate, endDate));
+        final Throwable raisedException = catchThrowable(() -> new Period(startDate, endDate));
 
         //then
         assertThat(raisedException).isInstanceOf(IllegalArgumentException.class)
@@ -59,8 +59,8 @@ public class PeriodTest {
     public void should_throwIllegal_when_periodIsOpen() {
 
         //when
-        final Throwable periodNotEndedException = Assertions.catchThrowable(() -> new Period(DateUtil.now(), null));
-        final Throwable periodNotStartedException = Assertions.catchThrowable(() -> new Period(null, DateUtil.now()));
+        final Throwable periodNotEndedException = catchThrowable(() -> new Period(DateUtil.now(), null));
+        final Throwable periodNotStartedException = catchThrowable(() -> new Period(null, DateUtil.now()));
 
         //then
         assertThat(periodNotEndedException).isInstanceOf(IllegalArgumentException.class)
@@ -113,7 +113,7 @@ public class PeriodTest {
                 .build();
 
         final Period from28ofAprilTo30 = Period.builder()
-                .start(DateUtil.parseDatetime("2020-03-28T03:01:02"))
+                .start(DateUtil.parseDatetime("2020-04-28T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-30T03:01:02"))
                 .build();
 
@@ -133,5 +133,19 @@ public class PeriodTest {
         assertThat(from26ofAprilTo29.isOverlapped(from25ofAprilTo30)).isTrue();
         assertThat(from26ofAprilTo29.isOverlapped(from26ofAprilTo29)).isTrue();
         assertThat(from26ofAprilTo29.isOverlapped(from27ofAprilTo28)).isTrue();
+
+    }
+
+    @Test
+    public void should_throwIllegal_when_notingToCheckIfOverlaps() {
+        //given
+        final Period periodToCheck = new Period(DateUtil.now(), DateUtil.tomorrow());
+
+        //when
+        final Throwable raisedException = catchThrowable(() -> periodToCheck.isOverlapped(null));
+
+        //then
+        assertThat(raisedException).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Period to check is mandatory");
     }
 }
