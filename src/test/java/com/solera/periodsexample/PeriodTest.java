@@ -87,12 +87,16 @@ public class PeriodTest {
                 .end(DateUtil.parseDatetime("2020-05-01T03:01:02"))
                 .build();
 
-        //when
-        final boolean isOverlapped = aprilPeriod.isOverlapped(marchPeriod);
+        final Period endsAtTheBeginningOfPeriod = Period.builder()
+                .start(DateUtil.parseDatetime("2020-02-29T03:01:02"))
+                .end(DateUtil.parseDatetime("2020-04-26T03:01:02"))
+                .build();
 
-        //then
-        assertThat(isOverlapped).isFalse();
+        //when then
+
+        assertThat(aprilPeriod.isOverlapped(marchPeriod)).isFalse();
         assertThat(aprilPeriod.isOverlapped(startAtEndOfPeriod)).isFalse();
+        assertThat(aprilPeriod.isOverlapped(endsAtTheBeginningOfPeriod)).isFalse();
     }
 
     @Test
