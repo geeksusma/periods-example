@@ -1,11 +1,11 @@
 package com.solera.periodsexample;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import java.util.Date;
 
+@Getter
+@ToString
 @EqualsAndHashCode
 @Builder(access = AccessLevel.PACKAGE)
 public class Period {
