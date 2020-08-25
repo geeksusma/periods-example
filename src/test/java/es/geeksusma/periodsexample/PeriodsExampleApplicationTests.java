@@ -1,4 +1,4 @@
-package com.solera.periodsexample;
+package es.geeksusma.periodsexample;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

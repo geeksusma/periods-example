@@ -1,4 +1,4 @@
-package com.solera.periodsexample;
+package es.geeksusma.periodsexample;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

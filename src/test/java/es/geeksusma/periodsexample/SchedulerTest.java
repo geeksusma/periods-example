@@ -1,4 +1,4 @@
-package com.solera.periodsexample;
+package es.geeksusma.periodsexample;
 
 import org.assertj.core.util.DateUtil;
 import org.junit.Before;

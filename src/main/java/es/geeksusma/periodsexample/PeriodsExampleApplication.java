@@ -1,4 +1,4 @@
-package com.solera.periodsexample;
+package es.geeksusma.periodsexample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
