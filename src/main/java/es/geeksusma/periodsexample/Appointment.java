@@ -2,11 +2,9 @@ package es.geeksusma.periodsexample;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import java.util.Date;
 
-@ToString
 @EqualsAndHashCode
 @Builder
 public class Appointment {

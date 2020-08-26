@@ -1,16 +1,19 @@
 package es.geeksusma.periodsexample;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.Date;
 
 @Getter
-@ToString
 @EqualsAndHashCode
 @Builder(access = AccessLevel.PACKAGE)
 public class Period {
 
     private Date start;
+    @Getter(AccessLevel.NONE)
     private Date end;
 
     public Period(final Date start, final Date end) {
