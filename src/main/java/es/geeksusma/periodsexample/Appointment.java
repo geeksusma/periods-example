@@ -1,8 +1,5 @@
 package es.geeksusma.periodsexample;
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-
 import java.util.Date;
 import java.util.Objects;
 
@@ -10,7 +7,7 @@ public class Appointment {
 
     private final Period period;
 
-    public Appointment(Period period) {
+    private Appointment(Period period) {
         this.period = period;
     }
 

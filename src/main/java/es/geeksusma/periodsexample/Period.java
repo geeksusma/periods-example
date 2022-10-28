@@ -15,7 +15,7 @@ public class Period {
     @Getter(AccessLevel.NONE)
     private final Date end;
 
-    public Period(final Date start, final Date end) {
+    private Period(final Date start, final Date end) {
         assertIfPeriodIsClosed(start, end);
         this.start = start;
         this.end = end;

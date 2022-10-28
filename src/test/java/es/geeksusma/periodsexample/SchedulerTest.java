@@ -32,7 +32,7 @@ public class SchedulerTest {
     @Test
     public void should_returnNotEmpty_when_appointmentIsAdded() {
         //given
-        final Period period = new Period(DateUtil.now(), DateUtil.tomorrow());
+        final Period period = Period.PeriodBuilder.builder().start(DateUtil.now()).end(DateUtil.tomorrow()).build();
         final Appointment appointment = Appointment.AppointmentBuilder.builder().period(period).build();
 
         //when
@@ -56,11 +56,11 @@ public class SchedulerTest {
     public void should_orderByStartDate_when_addingAppointments() {
         //given
         final Appointment appointmentFor28OfMarch = Appointment.AppointmentBuilder.builder()
-                .period(new Period(DateUtil.parseDatetime("2020-03-28T03:01:02"), DateUtil.parseDatetime("2020-03-29T03:01:02")))
+                .period(Period.PeriodBuilder.builder().start(DateUtil.parseDatetime("2020-03-28T03:01:02")).end(DateUtil.parseDatetime("2020-03-29T03:01:02")).build())
                 .build();
 
         final Appointment appointmentFor29OfMarch = Appointment.AppointmentBuilder.builder()
-                .period(new Period(DateUtil.parseDatetime("2020-03-29T03:01:02"), DateUtil.parseDatetime("2020-03-30T03:01:02")))
+                .period(Period.PeriodBuilder.builder().start(DateUtil.parseDatetime("2020-03-29T03:01:02")).end(DateUtil.parseDatetime("2020-03-30T03:01:02")).build())
                 .build();
         final List<Appointment> expectedAppointments = Arrays.asList(appointmentFor28OfMarch, appointmentFor29OfMarch);
 
@@ -76,7 +76,7 @@ public class SchedulerTest {
     public void should_skipAppointment_if_conflict() {
         //given
         final Appointment appointmentFor28OfMarch = Appointment.AppointmentBuilder.builder()
-                .period(new Period(DateUtil.parseDatetime("2020-03-28T03:01:02"), DateUtil.parseDatetime("2020-03-29T03:01:02")))
+                .period(Period.PeriodBuilder.builder().start(DateUtil.parseDatetime("2020-03-28T03:01:02")).end(DateUtil.parseDatetime("2020-03-29T03:01:02")).build())
                 .build();
 
         final List<Appointment> expectedAppointments = Collections.singletonList(appointmentFor28OfMarch);

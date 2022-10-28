@@ -17,7 +17,7 @@ public class PeriodTest {
         final Date endDate = DateUtil.now();
 
         //when
-        final Throwable raisedException = catchThrowable(() -> new Period(startDate, endDate));
+        final Throwable raisedException = catchThrowable(() -> Period.PeriodBuilder.builder().start(startDate).end(endDate).build());
 
         //then
         assertThat(raisedException).isInstanceOf(IllegalArgumentException.class)
@@ -35,7 +35,7 @@ public class PeriodTest {
                 .build();
 
         //when
-        final Period period = new Period(startDate, endDate);
+        final Period period = Period.PeriodBuilder.builder().start(startDate).end(endDate).build();
 
         //then
         assertThat(period).isEqualTo(periodExpected);
@@ -49,7 +49,7 @@ public class PeriodTest {
         final Period expected = Period.PeriodBuilder.builder().start(now).end(now).build();
 
         //when
-        final Period period = new Period(now, now);
+        final Period period = Period.PeriodBuilder.builder().start(now).end(now).build();
 
         //then
         assertThat(period).isEqualTo(expected);
@@ -59,8 +59,8 @@ public class PeriodTest {
     public void should_throwIllegal_when_periodIsOpen() {
 
         //when
-        final Throwable periodNotEndedException = catchThrowable(() -> new Period(DateUtil.now(), null));
-        final Throwable periodNotStartedException = catchThrowable(() -> new Period(null, DateUtil.now()));
+        final Throwable periodNotEndedException = catchThrowable(() -> Period.PeriodBuilder.builder().start(DateUtil.now()).build());
+        final Throwable periodNotStartedException = catchThrowable(() -> Period.PeriodBuilder.builder().end(DateUtil.now()).build());
 
         //then
         assertThat(periodNotEndedException).isInstanceOf(IllegalArgumentException.class)
@@ -139,7 +139,7 @@ public class PeriodTest {
     @Test
     public void should_throwIllegal_when_notingToCheckIfOverlaps() {
         //given
-        final Period periodToCheck = new Period(DateUtil.now(), DateUtil.tomorrow());
+        final Period periodToCheck = Period.PeriodBuilder.builder().start(DateUtil.now()).end(DateUtil.tomorrow()).build();
 
         //when
         final Throwable raisedException = catchThrowable(() -> periodToCheck.isOverlapped(null));
