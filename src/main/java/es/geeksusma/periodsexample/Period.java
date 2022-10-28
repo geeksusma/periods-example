@@ -6,9 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Getter
-@EqualsAndHashCode
 @Builder(access = AccessLevel.PACKAGE)
 public class Period {
 
@@ -47,4 +47,16 @@ public class Period {
         return this.start.before(dateToCheck) && this.end.after(dateToCheck);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Period period = (Period) o;
+        return Objects.equals(start, period.start) && Objects.equals(end, period.end);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(start, end);
+    }
 }
