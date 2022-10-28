@@ -4,8 +4,8 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 
 import java.util.Date;
+import java.util.Objects;
 
-@EqualsAndHashCode
 @Builder
 public class Appointment {
 
@@ -18,5 +18,18 @@ public class Appointment {
 
     public boolean hasConflict(final Appointment appointment) {
         return this.period.isOverlapped(appointment.period);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Appointment that = (Appointment) o;
+        return Objects.equals(period, that.period);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(period);
     }
 }
