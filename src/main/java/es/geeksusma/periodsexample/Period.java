@@ -9,12 +9,11 @@ import java.util.Date;
 import java.util.Objects;
 
 @Getter
-@Builder(access = AccessLevel.PACKAGE)
 public class Period {
 
-    private Date start;
+    private final Date start;
     @Getter(AccessLevel.NONE)
-    private Date end;
+    private final Date end;
 
     public Period(final Date start, final Date end) {
         assertIfPeriodIsClosed(start, end);
@@ -58,5 +57,28 @@ public class Period {
     @Override
     public int hashCode() {
         return Objects.hash(start, end);
+    }
+
+    static class PeriodBuilder {
+        private Date start;
+        private Date end;
+
+        static PeriodBuilder builder() {
+            return new PeriodBuilder();
+        }
+
+        PeriodBuilder start(Date start) {
+            this.start = start;
+            return this;
+        }
+
+        PeriodBuilder end(Date end) {
+            this.end = end;
+            return this;
+        }
+
+        Period build() {
+            return new Period(start, end);
+        }
     }
 }

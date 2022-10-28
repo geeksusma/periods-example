@@ -29,7 +29,7 @@ public class PeriodTest {
         //given
         final Date startDate = DateUtil.now();
         final Date endDate = DateUtil.tomorrow();
-        final Period periodExpected = Period.builder()
+        final Period periodExpected = Period.PeriodBuilder.builder()
                 .start(startDate)
                 .end(endDate)
                 .build();
@@ -46,7 +46,7 @@ public class PeriodTest {
     public void should_buildPeriod_when_startAndEndAreTheSame() {
         //given
         final Date now = DateUtil.now();
-        final Period expected = Period.builder().start(now).end(now).build();
+        final Period expected = Period.PeriodBuilder.builder().start(now).end(now).build();
 
         //when
         final Period period = new Period(now, now);
@@ -73,21 +73,21 @@ public class PeriodTest {
     @Test
     public void should_returnFalse_when_periodDoesNotOverlaps() {
         //given
-        final Period aprilPeriod = Period.builder()
+        final Period aprilPeriod = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-04-26T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-29T03:01:02"))
                 .build();
-        final Period marchPeriod = Period.builder()
+        final Period marchPeriod = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-03-26T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-03-27T03:01:02"))
                 .build();
 
-        final Period startAtEndOfPeriod = Period.builder()
+        final Period startAtEndOfPeriod = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-04-29T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-05-01T03:01:02"))
                 .build();
 
-        final Period endsAtTheBeginningOfPeriod = Period.builder()
+        final Period endsAtTheBeginningOfPeriod = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-02-29T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-26T03:01:02"))
                 .build();
@@ -102,27 +102,27 @@ public class PeriodTest {
     @Test
     public void should_returnOverlapped_when_periodCollides() {
         //given
-        final Period from26ofAprilTo29 = Period.builder()
+        final Period from26ofAprilTo29 = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-04-26T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-29T03:01:02"))
                 .build();
 
-        final Period from25ofAprilTo28 = Period.builder()
+        final Period from25ofAprilTo28 = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-04-25T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-28T03:01:02"))
                 .build();
 
-        final Period from28ofAprilTo30 = Period.builder()
+        final Period from28ofAprilTo30 = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-04-28T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-30T03:01:02"))
                 .build();
 
-        final Period from25ofAprilTo30 = Period.builder()
+        final Period from25ofAprilTo30 = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-03-25T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-30T03:01:02"))
                 .build();
 
-        final Period from27ofAprilTo28 = Period.builder()
+        final Period from27ofAprilTo28 = Period.PeriodBuilder.builder()
                 .start(DateUtil.parseDatetime("2020-03-27T03:01:02"))
                 .end(DateUtil.parseDatetime("2020-04-28T03:01:02"))
                 .build();

@@ -6,10 +6,13 @@ import lombok.EqualsAndHashCode;
 import java.util.Date;
 import java.util.Objects;
 
-@Builder
 public class Appointment {
 
     private final Period period;
+
+    public Appointment(Period period) {
+        this.period = period;
+    }
 
     public Date getStartDate() {
         return this.period.getStart();
@@ -31,5 +34,23 @@ public class Appointment {
     @Override
     public int hashCode() {
         return Objects.hash(period);
+    }
+
+    static class AppointmentBuilder {
+
+        private Period period;
+
+        static AppointmentBuilder builder() {
+            return new AppointmentBuilder();
+        }
+
+        AppointmentBuilder period(Period period) {
+            this.period = period;
+            return this;
+        }
+
+        Appointment build() {
+            return new Appointment(this.period);
+        }
     }
 }
