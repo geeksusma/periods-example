@@ -12,7 +12,7 @@ public class Appointment {
     }
 
     public Date getStartDate() {
-        return this.period.getStart();
+        return this.period.startAt();
     }
 
 

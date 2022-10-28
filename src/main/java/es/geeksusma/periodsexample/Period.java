@@ -1,24 +1,28 @@
 package es.geeksusma.periodsexample;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 
 import java.util.Date;
 import java.util.Objects;
 
-@Getter
+
 public class Period {
 
     private final Date start;
-    @Getter(AccessLevel.NONE)
     private final Date end;
+
+    public Period() {
+        this.start = null;
+        this.end = null;
+    }
 
     private Period(final Date start, final Date end) {
         assertIfPeriodIsClosed(start, end);
         this.start = start;
         this.end = end;
+    }
+
+    public static Period empty() {
+        return new Period();
     }
 
     private void assertIfPeriodIsClosed(Date start, Date end) {
@@ -44,6 +48,10 @@ public class Period {
 
     private boolean isBetween(Date dateToCheck) {
         return this.start.before(dateToCheck) && this.end.after(dateToCheck);
+    }
+
+    public Date startAt() {
+        return start;
     }
 
     @Override

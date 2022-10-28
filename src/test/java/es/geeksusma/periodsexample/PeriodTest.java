@@ -148,4 +148,18 @@ public class PeriodTest {
         assertThat(raisedException).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Period to check is mandatory");
     }
+
+    @Test
+    public void shouldReturnStart_when_initialised() {
+
+        Date start = DateUtil.now();
+        Date end = DateUtil.tomorrow();
+        Period initialisedPeriod = Period.PeriodBuilder.builder()
+                .start(start)
+                .end(end)
+                .build();
+
+        assertThat(initialisedPeriod.startAt()).isEqualTo(start);
+        assertThat(Period.empty().startAt()).isNull();
+    }
 }
