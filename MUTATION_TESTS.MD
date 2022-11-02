@@ -7,12 +7,12 @@ using Mutation Tests.
     
 ## Why Mutation Tests?
 
-Some people tends to think in having a test coverage up to 90% is fine, but it brings a 
-fake feeling of being safe, since "almost all the coded is tested". But the question here is
-how good are those tests?
+Some people tend to think having a test coverage up to 90% is fine, but it brings a
+fake feeling of being safe, since "almost all the code is tested". But the question here is
+How good are those tests?
 
-Well I saw several times in my career how, projects built based on only having a good coverage metric, later
-they were totally unsafe, with a lot of production issues and hotfixing. The reason is simple, those test were written 
+Well I have saw several times in my career how projects built based on only having a good coverage metric, later
+they were totally unsafe, with a lot of production issues and hotfixing. The reason is simple, those test were written
 like "eh, let's pass the coverage and cheat the Sonar", and they were not written to discover/tests behaviours
 
 Even coding following a TDD approach, when having a high code coverage is a consequence of following that approach, is better
@@ -31,20 +31,18 @@ finally based on how many test are written, it is smart enough to create a repor
 That bytecode alteration is based on, for example, replacing a "==" by ">=" operator, neglecting ifs thinks like that, 
 here you can find a good summary of mutators
 
-A better documentation can be found here, just in case you want to go a bit further:
-https://pitest.org/
+A better documentation can be found [here](https://pitest.org/), just in case you want to go a bit further.
 
-## The experiment
+## The experiment :man_technologist:
 
-I created this repo to model a non-anemic model using TDD. In fact the idea behind this repo was to introduce some concepts
-from DDD (link) but, as sometimes happens, this project is an abandoned one.
+I created this repo some time ago as a session to model a [non-anemic model](https://martinfowler.com/bliki/AnemicDomainModel.html) using TDD. In fact the idea behind this repo was to introduce some concepts
+from [DDD](https://martinfowler.com/tags/domain%20driven%20design.html) but, as sometimes happens, this project is an abandoned one.
 
-But since the value objects and a service were built, I tried to check how good was my TDD approach. So I added PIT as 
-as a plugin to leave me run some Mutation tests over my code. The results were interesting, and I was able to reach some conclusions
+But since the value objects and a service were built, I tried to check how good my TDD approach was. So I added PIT as a plugin to let me run some Mutation tests over my code. The results were interesting, and I was able to reach some conclusions
 
 ### First Try. Mutants are alive!!!
 
-Running the Mutation Tests at this commit, the next report is generated:
+Running the Mutation Tests at **7c584799** commit, the next report is generated:
 
 As you can see, there are a high number of Mutants alive. Remember, a non killed Mutant is probably missed tested (or not well tested) code, 
 so every alive mutant needs to be reviewed.
