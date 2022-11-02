@@ -44,17 +44,22 @@ But since the value objects and a service were built, I tried to check how good 
 
 Running the Mutation Tests at **7c584799** commit, the next report is generated:
 
+![First try](imgs/001.png)
+
 As you can see, there are a high number of Mutants alive. Remember, a non killed Mutant is probably missed tested (or not well tested) code, 
 so every alive mutant needs to be reviewed.
 
 #### The Lombok problem
 
-As you can see in the next screenshot, all my mutants are alive in code not "written" at any place. Since all those mutants
+As you can see in the next screenshots, all my mutants are alive in code not "written" at any place. Since all those mutants
 are affecting to equals, hashcode, canEqual, getXXX or so.. the first temptation could be to tune the library in order to exclude
 those methods from the report, and it could be fine, but in fact, I don't like the feeling of having Mutants in code that I can't review,
 so I started to remove Lombok from the project.
 
-Why this project has Lombok?
+![Breakdown by class](imgs/002.png)
+![Where is the code?](imgs/003.png)
+
+Why this project has [Lombok](https://projectlombok.org/)?
 
 Well, I was a fan of Lombok some years ago, but nowadays, I don't like it anymore. But since I wanted to test Mutation in a
 "legacy" project, it makes sense to find Lombok here, based on my past likes.
