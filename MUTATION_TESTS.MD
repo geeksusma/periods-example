@@ -71,15 +71,31 @@ Check those commits and the refactor done, and generating the Mutation Test repo
 the only metric that is getting higher is the "test strength", is true the Mutation Testing setup was changed in order to 
 ignore equals/hashcode.
 
-Some people can ask "and why you just don't tune the Mutation testing before to ignore those methods?" well the answer is quite
+* Report for **c6b3927c**
+
+![Where is the code?](imgs/003.png)
+
+* Report for **b521be14**
+
+![Where is the code?](imgs/003.png)
+
+* Report for **95c9621f**
+
+![Where is the code?](imgs/003.png)
+
+* Report for **fdf50568**
+
+![Where is the code?](imgs/003.png)
+
+Some people can ask "and why don't you just tune the Mutation testing before to ignore those methods?" well the answer is quite
 simple.
 
-Using Lombok Annotations, it was not only adding equals and hashcode, it was also adding out of the box, methods like "canEqual", 
+Using Lombok Annotations, it was not only about adding equals and hashcode, it was also adding out of the box methods like "canEqual",
 or "toString". And those methods they were never used from my code, I can say it was adding "more stuff than expected", and
 as more methods are magically added, more mutants can survive.
 
-The second thought is, ok if I only want to have equals and hashcode (and some builders) then why not to add them manually 
-or using the IDE? if now those methods are going to be evaluated, I'd like to, at least, be able to check how good that code is.
+The second thought is, ok if I only want to have equals and hashcode (and some builders) then why not add them manually
+or using the IDE? If now those methods are going to be evaluated, I'd like to, at least, be able to check how good that code is.
 
 ### Replace Getter by Domain Logic
 
