@@ -77,7 +77,7 @@ ignore equals/hashcode.
 
 * Report for **b521be14**
 
-![Where is the code?](imgs/003.png)
+![Where is the code?](imgs/005.png)
 
 * Report for **95c9621f**
 
