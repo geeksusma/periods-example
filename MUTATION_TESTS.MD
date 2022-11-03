@@ -81,7 +81,7 @@ ignore equals/hashcode.
 
 * Report for **95c9621f**
 
-![Where is the code?](imgs/003.png)
+![Where is the code?](imgs/006.png)
 
 * Report for **fdf50568**
 
