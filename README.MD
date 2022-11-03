@@ -1,4 +1,10 @@
 # INTRODUCTION TO PERIODS
+
+## Mutation Testing
+
+To read the mutation testing post, please click [here](MUTATION_TESTS.MD)
+
+## Disclaimer, this is outdated
 The scope of this session is to know how to develop a rich value object (and a root aggregation) using TDD.
 
 Let's define what is a Period.
