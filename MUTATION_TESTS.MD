@@ -73,7 +73,7 @@ ignore equals/hashcode.
 
 * Report for **c6b3927c**
 
-![Where is the code?](imgs/003.png)
+![Where is the code?](imgs/004.png)
 
 * Report for **b521be14**
 
